@@ -31,4 +31,5 @@ pxememo
 >  apt-get install isc-dhcp-server tftp-hpa
 
 1. 配置dhcp服务器
+> wget --no-check-certificate -O - https://raw.github.com/michalliu/pxememo/master/patches/dhcpd.conf.patch | patch /etc/dhcp/dhcpd.conf
 
