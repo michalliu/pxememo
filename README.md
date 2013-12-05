@@ -22,5 +22,8 @@ pxememo
 1. sudo无密码启动
 > wget --no-check-certificate -O - https://raw.github.com/mmplayer/fsupdate/base/common/etc/sudoers.patch | patch /etc/sudoers
 
+网络启动
+----
 1. 定时备份系统
 > TODO
+
