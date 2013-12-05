@@ -1,0 +1,35 @@
+--- dhcpd.conf.original	2013-12-06 06:47:11.609729017 +0800
++++ dhcpd.conf	2013-12-06 06:49:11.594323978 +0800
+@@ -13,8 +13,8 @@
+ option domain-name "example.org";
+ option domain-name-servers ns1.example.org, ns2.example.org;
+ 
+-default-lease-time 600;
+-max-lease-time 7200;
++default-lease-time 86400;
++max-lease-time 8640000;
+ 
+ # If this DHCP server is the official DHCP server for the local
+ # network, the authoritative directive should be uncommented.
+@@ -46,6 +46,21 @@
+ #  option routers rtr-239-32-1.example.org;
+ #}
+ 
++subnet 192.168.2.0 netmask 255.255.255.0 {
++  interface eth0;
++  range 192.168.2.3 192.168.2.150; 
++  option broadcast-address 192.168.2.255;
++  option routers 192.168.2.1;
++  option domain-name-servers 192.168.2.1;
++  filename "pxelinux.0";
++  next-server 192.168.2.2; # our server
++  
++#  host pc1 {
++#    hardware ethernet 00:1f:16:11:15:cf;
++#    fixed-address 192.168.2.150;
++#  }
++}
++
+ # A slightly different configuration for an internal subnet.
+ #subnet 10.5.5.0 netmask 255.255.255.224 {
+ #  range 10.5.5.26 10.5.5.30;
