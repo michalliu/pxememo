@@ -37,3 +37,7 @@ pxememo
 > mkdir -p /srv/nfs/homes
 > wget --no-check-certificate -O - -q https://raw.github.com/michalliu/pxememo/master/patches/exports.patch | patch /etc/exports
 
+1. 获取pxelinux.0
+> apt-get install syslinux
+  cp /usr/lib/syslinux/pxelinux.0 /srv/tftp/ #放到tftp目录下
+
