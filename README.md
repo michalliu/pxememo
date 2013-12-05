@@ -1,0 +1,4 @@
+pxememo
+=======
+
+memory on pxeboot
