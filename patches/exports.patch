@@ -1,0 +1,7 @@
+--- exports.original	2013-12-06 07:03:47.226665932 +0800
++++ exports	2013-12-06 07:03:58.990724419 +0800
+@@ -8,3 +8,4 @@
+ # /srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)
+ # /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
+ #
++/srv/nfs/homes 192.168.2.0/24(rw,no_root_squash,no_subtree_check,sync)
