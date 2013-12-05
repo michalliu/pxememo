@@ -30,3 +30,5 @@ pxememo
 1. 安装dhcp,tftp服务器
 >  apt-get install isc-dhcp-server tftp-hpa
 
+1. 配置dhcp服务器
+
