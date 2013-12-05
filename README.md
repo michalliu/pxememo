@@ -5,7 +5,7 @@ pxememo
 ----
 1. U盘安装debian,root登陆
 1. 配置静态ip 192.168.2.2
->iface eth0 inet static  
+> iface eth0 inet static  
         address 192.168.2.2  
         netmask 255.255.255.0  
         gateway 192.168.2.1  
@@ -22,8 +22,11 @@ pxememo
 1. sudo无密码启动
 > wget --no-check-certificate -O - https://raw.github.com/mmplayer/fsupdate/base/common/etc/sudoers.patch | patch /etc/sudoers
 
-网络启动
-----
 1. 定时备份系统
 > TODO
+
+网络启动
+----
+1. 安装dhcp,tftp服务器
+>  apt-get install isc-dhcp-server tftp-hpa
 
