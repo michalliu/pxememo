@@ -1,0 +1,16 @@
+/home/michal
+/root/test/*
+/live/*
+/boot/*
+/dev/*
+/proc/*
+/sys/*
+/media/*
+/mnt/*
+/run/*
+/tmp/*
+/srv/*
+/var/log/*
+/etc/fstab
+/var/lib/boinc-client
+/network/interfaces

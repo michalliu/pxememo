@@ -1,0 +1,5 @@
+DEFAULT debian
+LABEL debian
+kernel debian/vmlinuz-3.2.0-4-amd64
+append initrd=debian/initrd.img-3.2.0-4-amd64-nfs root=/dev/nfs nfsroot=192.168.2.2:/srv/nfs/homes/ltcrabbit ip=dhcp rw vga=792
+

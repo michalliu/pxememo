@@ -1,0 +1,48 @@
+#!/bin/bash
+ROOTFS_DIR=${1:-"/srv/nfs/homes/default"}
+
+mountPseudoFs(){
+set +e
+mount --bind /dev     ${ROOTFS_DIR}/dev
+if [ ! -d ${ROOTFS_DIR}/dev/pts ];then
+	mkdir ${ROOTFS_DIR}/dev/pts
+fi
+mount --bind /dev/pts     ${ROOTFS_DIR}/dev/pts
+mount --bind /proc    ${ROOTFS_DIR}/proc
+mount --bind /sys     ${ROOTFS_DIR}/sys
+set -e
+}
+
+umountPseudoFs(){
+set +e
+echo "umount ${ROOTFS_DIR}/dev/pts"
+sleep 2
+umount -l ${ROOTFS_DIR}/dev/pts
+echo "umount ${ROOTFS_DIR}/dev"
+sleep 2
+umount -l ${ROOTFS_DIR}/dev
+echo "umount ${ROOTFS_DIR}/proc"
+sleep 2
+umount -l ${ROOTFS_DIR}/proc
+echo "umount ${ROOTFS_DIR}/sys"
+sleep 2
+umount -l ${ROOTFS_DIR}/sys
+sleep 2
+set -e
+}
+
+umountPseudoFs
+
+rsync -avc --exclude-from=./exclude.txt / $ROOTFS_DIR
+cp -rv ./patches/* $ROOTFS_DIR
+
+mountPseudoFs
+set +e
+chroot $ROOTFS_DIR apt-get purge isc-dhcp-server -y
+chroot $ROOTFS_DIR apt-get purge tftpd-hpa -y
+chroot $ROOTFS_DIR apt-get autoremove -y
+set -e
+umountPseudoFs
+
+# just make sure umount success
+sync

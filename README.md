@@ -34,10 +34,25 @@ pxememo
 > wget --no-check-certificate -O - -q https://raw.github.com/michalliu/pxememo/master/patches/dhcpd.conf.patch | patch /etc/dhcp/dhcpd.conf
 
 1. 配置nfs服务器
-> mkdir -p /srv/nfs/homes
+> mkdir -p /srv/nfs/homes  
 > wget --no-check-certificate -O - -q https://raw.github.com/michalliu/pxememo/master/patches/exports.patch | patch /etc/exports
 
 1. 获取pxelinux.0
-> apt-get install syslinux
+> apt-get install syslinux  
   cp /usr/lib/syslinux/pxelinux.0 /srv/tftp/ #放到tftp目录下
 
+生成内核(vmlinuz)和内存启动镜像(initrd.img)
+----
+1. 生成initrd.img
+  * 编辑 `/etc/initramfs-tools/initramfs.conf` 替换:
+    1. `DEVICE=` 为 `DEVICE=eth0` 可以解决启动时[网络超时的问题](http://askubuntu.com/questions/330832/ubuntu-12-04-pxe-boot-fail-with-message-ip-config-no-response-after-secs)
+    1. 若有`BOOT=`则替换为`BOOT=nfs`
+  * 执行
+    > mkinitramfs -o initrd.img-\`uname -r\`-nfs
+2. vimlinuz一般在 `/boot` 下可以找到
+3. 按照系统类型放到 tftpd 服务目录下，本例中为 `/srv/tftp/debian`，文件目录结构参考 `https://github.com/michalliu/pxememo/tree/master/tftpd`
+4. pxelinux.cfg 目录下存放的是每个客户机的配置，请参考
+
+生成根文件系统
+----
+根文件系统可[基于现有的任意一系统生成](/fsbootstrap)

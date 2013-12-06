@@ -1,0 +1,5 @@
+DEFAULT debian
+LABEL debian
+kernel ltcrabbit/vmlinuz-2.6.32-5-686
+append initrd=ltcrabbit/initrd.img-2.6.32-5-686-nfs root=/dev/nfs nfsroot=192.168.2.2:/srv/nfs/homes/ltcrabbit ip=dhcp rw vga=792
+
