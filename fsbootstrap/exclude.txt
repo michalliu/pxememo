@@ -1,5 +1,5 @@
 /home/michal
-/root/test/*
+/root/*
 /live/*
 /boot/*
 /dev/*
@@ -12,5 +12,5 @@
 /srv/*
 /var/log/*
 /etc/fstab
+/etc/network/interfaces
 /var/lib/boinc-client
-/network/interfaces
