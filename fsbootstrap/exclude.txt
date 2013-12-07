@@ -1,4 +1,4 @@
-/home/michal
+/home/michal/*
 /root/*
 /live/*
 /boot/*
@@ -13,4 +13,4 @@
 /var/log/*
 /etc/fstab
 /etc/network/interfaces
-/var/lib/boinc-client
+/var/lib/boinc-client/*
