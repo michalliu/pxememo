@@ -45,7 +45,7 @@ pxememo
 ----
 1. 生成initrd.img
   * 编辑 `/etc/initramfs-tools/initramfs.conf` 替换:
-    1. `DEVICE=` 为 `DEVICE=eth0` 可以解决启动时[网络超时的问题](http://askubuntu.com/questions/330832/ubuntu-12-04-pxe-boot-fail-with-message-ip-config-no-response-after-secs)
+    1. `DEVICE=` 为 `DEVICE=eth0` 可以解决启动时[网络超时的问题](http://askubuntu.com/questions/330832/ubuntu-12-04-pxe-boot-fail-with-message-ip-config-no-response-after-secs).这里是局域网内存在多个dhcp server导致的问题.
     1. 若有`BOOT=`则替换为`BOOT=nfs`
   * 执行
     > mkinitramfs -o initrd.img-\`uname -r\`-nfs
