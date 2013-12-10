@@ -1,6 +1,5 @@
 /home/michal/*
 /root/*
-/live/*
 /boot/*
 /dev/*
 /proc/*
