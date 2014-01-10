@@ -4,3 +4,5 @@
 # The loopback network interface
 auto lo
 iface lo inet loopback
+
+iface eth0 inet manual
